@@ -1,10 +1,17 @@
-<div class="row">
-
-  <alert ng-repeat='card in cards' close="deleteCard(card)">
-    <h2>{{ card.title }}</h2>
+<h3>Cards <span class="glyphicon glyphicon-complete"></h3>
+  <a ng-click='addCard()'>Add Card...</a>
+  <div class="row">
+    <alert ng-repeat='card in cards' close="deleteCard(card)">
+    <span ng-show='card.editing == true'>
+      <input type='text' 
+      ng-blur='card.editing = false' ng-model='card.title'/>
+    </span>
+    <span ng-show='card.editing === false' ng-click='card.editing = true'>
+      <h2>{{card.title}}</h2>
+    </span>
+    <p><a ng-click='addTask(card)'>add a task...</a></p>
     <div ng-repeat="task in card.tasks">
       <input type="checkbox" ng-model="task.complete" ng-disabled="task.complete"/> 
       <span ng-class="task.complete ? 'strike' : ''">{{ task.description }}</span></div>
-  </alert>
-
-</div>
+    </alert>
+  </div>

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('unkemptApp')
-.controller('MainCtrl', function ($scope) {
+.controller('MainCtrl', function ($scope, cardManager) {
 
-  $scope.cards = [{
+  $scope.cards = cardManager.fetchCards() || [{
     title: 'getting things done',
     tasks: [{
       complete: false,
@@ -20,7 +20,25 @@ angular.module('unkemptApp')
     ]}
   ];
 
+  $scope.addCard = function() {
+    $scope.cards.push({
+      editing: false,
+      title: 'Change title...',
+      tasks: [{
+        description: 'enter a description',
+        complete: false
+      }]
+    });
+  };
+
   $scope.deleteCard = function(card) {
     $scope.cards.splice(card);
+  };
+
+  $scope.addTask = function(card) {
+    card.tasks.push({
+      description: 'enter a description',
+      complete: false
+    });
   };
 });
