@@ -13,8 +13,11 @@ describe('Directive: editLabel', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<edit-label></edit-label>');
+    element = angular.element('<edit-label value="this is the editLabel directive"></edit-label>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the editLabel directive');
+    console.log('=======');
+    console.log(element);
+    console.log('=======');
+    expect(element.attr('value')).toBe('this is the editLabel directive');
   }));
 });

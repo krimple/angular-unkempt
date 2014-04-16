@@ -4,10 +4,14 @@ angular.module('unkemptApp')
   .directive('editLabel', function () {
     return {
       templateUrl: 'views/directives/edit-label.html',
-      restrict: 'A',
+      restrict: 'E',
       scope: {
         value: '='
       },
-      replace: true
+      link: function(scope, element, attrs) {
+        console.log('link being called');
+        console.log(attrs);
+        scope.value = attrs.value;
+      }
     };
   });
