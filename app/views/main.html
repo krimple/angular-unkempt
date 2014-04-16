@@ -1,3 +1,6 @@
+Input: <div edit-label text="foobar">
+</div>
+<div> Result: {{foobar}} </div>
 <h3>Cards <span class="glyphicon glyphicon-complete"></h3>
   <a ng-click='addCard()'>Add Card...</a>
   <div class="row">
@@ -13,5 +16,6 @@
     <div ng-repeat="task in card.tasks">
       <input type="checkbox" ng-model="task.complete" ng-disabled="task.complete"/> 
       <span ng-class="task.complete ? 'strike' : ''">{{ task.description }}</span></div>
+      <input type="text" contenteditable ng-model="task.description" >
     </alert>
   </div>

@@ -1,0 +1,10 @@
+<span>
+
+<span ng-show='editing == true'>
+  <input type='text'
+         ng-blur='editing = false' ng-model='value'/>
+</span>
+<span ng-show='editing === false' ng-click='editing = true'>
+  <h2>{{value}}</h2>
+</span>
+</span>
