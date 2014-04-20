@@ -82,3 +82,18 @@ body {
   text-decoration: line-through;
 }
 
+ul.card-items {
+    list-style: none;
+}
+.card-header {
+
+}
+
+.card-header .title {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.card-header a {
+    font-size: 1.0em;
+}

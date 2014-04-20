@@ -1,17 +1,26 @@
-(function(global) { 'use strict';
+(function (global) {
+  'use strict';
 
- global.Task = function Todo() {
-   this.description = 'enter a task...';
-   this.dateDue = new Date();
-   this.complete = false;
- }
+  var Task = function Task(description, dueDate) {
+    this.description = description;
+    if (arguments.length === 2 && !!dueDate && angular.isDate(dueDate)) {
+      this.dateDue = dueDate;
+    } else {
+      this.dateDue = new Date();
+    }
 
- Task.complete = function() {
-   this.complete = true;
- };
+    this.complete = false;
+  };
 
- Task.isComplete = function() {
-   return this.complete;
- };
+  Task.prototype.markComplete = function () {
+    this.complete = true;
+    this.dateCompleted = new Date();
+  };
+
+  Task.prototype.isComplete = function () {
+    return this.complete;
+  };
+
+  global.Task = Task;
 
 }(this));

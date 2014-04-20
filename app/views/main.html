@@ -1,21 +1,28 @@
-Input: <div edit-label text="foobar">
-</div>
-<div> Result: {{foobar}} </div>
-<h3>Cards <span class="glyphicon glyphicon-complete"></h3>
-  <a ng-click='addCard()'>Add Card...</a>
-  <div class="row">
+<h1 class='title'>Unkempt! <a ng-click="addCard()">
+    <span class="glyphicon glyphicon-plus-sign"></span></a></h1>
+
+<div class="row">
     <alert ng-repeat='card in cards' close="deleteCard(card)">
     <span ng-show='card.editing == true'>
-      <input type='text' 
-      ng-blur='card.editing = false' ng-model='card.title'/>
+      <input type='text'
+             ng-blur='card.editing = false' ng-model='card.title'/>
     </span>
     <span ng-show='card.editing === false' ng-click='card.editing = true'>
       <h2>{{card.title}}</h2>
     </span>
-    <p><a ng-click='addTask(card)'>add a task...</a></p>
-    <div ng-repeat="task in card.tasks">
-      <input type="checkbox" ng-model="task.complete" ng-disabled="task.complete"/> 
-      <span ng-class="task.complete ? 'strike' : ''">{{ task.description }}</span></div>
-      <input type="text" contenteditable ng-model="task.description" >
+
+        <p><a ng-click='addTask(card)'>add a task...</a></p>
+
+        <ul class="card-items">
+        <li ng-repeat="task in card.tasks">
+            <input type="checkbox" ng-model="task.complete" />
+            <edit-label value="task.description"/>
+            <!--
+          <input type="checkbox" ng-model="task.complete" ng-disabled="task.complete"/>
+          <span ng-class="task.complete ? 'strike' : ''">{{ task.description }}</span></div>
+          <input type="text" contenteditable ng-model="task.description" >
+          -->
+        </li>
+        </ul>
     </alert>
-  </div>
+</div>
